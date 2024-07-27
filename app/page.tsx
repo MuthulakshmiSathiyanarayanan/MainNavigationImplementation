@@ -11,8 +11,8 @@ export default function Home() {
         width={100}
         height={20}
       />
-    <nav className="navbar">
-      <ul className="navLinks">
+    <nav className="bg-[#c9e3fb] p-4 top-0 left-0 w-full  z-[1000]">
+      <ul className="list-none flex justify-around p-0 m-0">
         <li>
           <Link href="/">Home</Link>
         </li>

@@ -2,20 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.navbar {
-    background-color: #c9e3fb;
-    padding: 1rem;
-    position: fixed;
-    z-index: 1000
-}
 
-.navLinks {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-}
+
+
 
 .navLinks li {
     margin: 0;
