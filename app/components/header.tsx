@@ -25,7 +25,7 @@ const NavBar = () => {
       <ul className="list-none flex justify-around p-0 m-0">
         {categories.map((category, index) => (
           <li className="m-0" key={index}>
-            <Link  className="text-gray-900 no-underline px-4 py-2 transition-colors duration-300 hover:bg-gray-200" href={`/category/${category}`} legacyBehavior>
+            <Link  className="text-gray-900 no-underline px-4 py-2 transition-colors duration-300 hover:bg-gray-200" href={`/c/${category}`} >
              {category}
             </Link>
           </li>
