@@ -43,16 +43,16 @@ const CategoryPage = ({params}:{params:any}) => {
                 image: string;
               }) => {
                   return (
-                    <li className="space-y-3" key={product?.id}>
-                           <Image className="w-180 h-180 overflow-hidden"
+                    <li className="space-y-3 gap-4" key={product?.id}>
+                           <Image className="p-[5px] max-w-[150px] min-w-[150px] max-h-[180px] min-h-[180px] bg-customDark rounded-[20px] mt-[15px] ml-[25px]"
                          src={product.image}
                          alt={product.title}
                           width={180} 
                           height={180} 
           />
-                      <h1>{product.id}</h1>
-                          <h2 className="flex flex-wrap">{product?.title}</h2>
-                          <p>${product?.price}</p>
+                      <h1 className="flex  justify-center ">{product.id}</h1>
+                          <h2 className="bg-customLight italic text-lg font-normal rounded-[5px] p-[2px] ml-[25px] break-words flex flex-wrap justify-center max-w-[150px]">{product?.title}</h2>
+                          <p className="flex  justify-center ">${product?.price}</p>
                       </li>
                   )
         })}
