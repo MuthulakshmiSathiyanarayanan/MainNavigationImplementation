@@ -1,7 +1,6 @@
 'use client';
-// import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-
+import Image from 'next/image';
 const CategoryPage = ({params}:{params:any}) => {
 //   const router = useRouter();
     // const { category } = router.query;
@@ -35,17 +34,24 @@ const CategoryPage = ({params}:{params:any}) => {
   return (
       <div>
       {/* <h1>{category}</h1> */} 
-       <ul className="bg-[#c9e3fb] p-4 top-0 left-0 w-full z-[1000] space-y-4">
+       <ul className="bg-[#c9e3fb] p-4 top-0 left-0 w-full z-[1000]  flex  justify-between ml-5 mr-5 gap4 mt-12 h-auto" >
               {products.map((product: {
                   id: number;
                 title: string;
                 price: number;
-                  description: string;
+                description: string;
+                image: string;
               }) => {
                   return (
-                      <li className="space-y-3" key={product?.id}>
+                    <li className="space-y-3" key={product?.id}>
+                           <Image className="w-180 h-180 overflow-hidden"
+                         src={product.image}
+                         alt={product.title}
+                          width={180} 
+                          height={180} 
+          />
                       <h1>{product.id}</h1>
-                          <h2>{product?.title}</h2>
+                          <h2 className="flex flex-wrap">{product?.title}</h2>
                           <p>${product?.price}</p>
                       </li>
                   )
