@@ -6,17 +6,9 @@
 
 
 
-.navLinks li {
-    margin: 0;
-}
-
 .navLinks a {
     color: #070505;
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s;
-}
-
-.navLinks a:hover {
-    background-color: #9ca49f;
 }
