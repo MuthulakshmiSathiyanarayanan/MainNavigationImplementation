@@ -2,17 +2,13 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 const CategoryPage = ({params}:{params:any}) => {
-//   const router = useRouter();
-    // const { category } = router.query;
     console.log(params);
   const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
-    // if (!category) return;
-
-    const fetchProducts = async () => {
+     const fetchProducts = async () => {
       try {
         const res = await fetch(`https://fakestoreapi.com/products/category/${params.category}`);
           const data = await res.json();
@@ -33,7 +29,6 @@ const CategoryPage = ({params}:{params:any}) => {
 
   return (
       <div>
-      {/* <h1>{category}</h1> */} 
        <ul className="bg-[#c9e3fb] p-4 top-0 left-0 w-full z-[1000]  flex  justify-between ml-5 mr-5 gap4 mt-12 h-auto" >
               {products.map((product: {
                   id: number;
