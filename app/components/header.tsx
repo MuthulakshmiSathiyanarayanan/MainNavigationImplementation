@@ -21,7 +21,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="bg-[#c9e3fb] p-4 top-0 left-0 w-full z-[1000]">
+    <nav className="bg-[#bfddf7] p-4 left-0 w-full h-15 top-10 z-1000 top rounded-3xl mb-5 font-semibold">
       <ul className="list-none flex justify-around p-0 m-0">
         {categories.map((category, index) => (
           <li className="m-0" key={index}>

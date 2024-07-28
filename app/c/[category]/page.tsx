@@ -5,7 +5,7 @@ const CategoryPage = ({params}:{params:any}) => {
     console.log(params);
   const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);//interface tried 
   
   useEffect(() => {
      const fetchProducts = async () => {
@@ -29,7 +29,7 @@ const CategoryPage = ({params}:{params:any}) => {
 
   return (
       <div>
-       <ul className="bg-[#c9e3fb] p-4 top-0 left-0 w-full z-[1000]  flex  justify-between ml-5 mr-5 gap4 mt-12 h-auto" >
+       <ul className="auto grid grid-cols-3 gap-10 bg-[#667685] " >
               {products.map((product: {
                   id: number;
                 title: string;
@@ -38,16 +38,17 @@ const CategoryPage = ({params}:{params:any}) => {
                 image: string;
               }) => {
                   return (
-                    <li className="space-y-3 gap-4" key={product?.id}>
+                    <li className="space-y-1 space-x-3x-1 gap-3 bg-[#cbd8e0] p-1 rounded-3xl mt-6" key={product?.id}>
+                       <h1 className="flex ml-[25px] ">ID:{product.id}</h1>
                            <Image className="p-[5px] max-w-[150px] min-w-[150px] max-h-[180px] min-h-[180px] bg-customDark rounded-[20px] mt-[15px] ml-[25px]"
                          src={product.image}
                          alt={product.title}
                           width={180} 
                           height={180} 
           />
-                      <h1 className="flex  justify-center ">{product.id}</h1>
+                      <p className="flex  ml-[25px]">${product?.price}</p>
                           <h2 className="bg-customLight italic text-lg font-normal rounded-[5px] p-[2px] ml-[25px] break-words flex flex-wrap justify-center max-w-[150px]">{product?.title}</h2>
-                          <p className="flex  justify-center ">${product?.price}</p>
+                         
                       </li>
                   )
         })}
