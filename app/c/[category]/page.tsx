@@ -1,27 +1,39 @@
-// app/c/[category]/page.tsx (or .js)
+'use client';
+import { Metadata } from 'next';
 import Image from 'next/image';
-import { Product } from '@/app/components/type';
+import { Product,Props } from '@/app/components/type';
 
 // Function to fetch products by category
-async function fetchProducts(category: string) {
+async function fetchProducts(category: string,sort:string) {
   const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
   const data: Product[] = await response.json();
   if (!response.ok) {
     throw new Error('Failed to fetch products');
   }
+  if (sort === 'price-asc') {
+    data.sort((a, b) => a.price - b.price);
+  } else if (sort === 'price-desc') {
+    data.sort((a, b) => b.price - a.price);
+  }
   return data;
 }
 // Server-side component for the category page
-export default async function CategoryPage({ params }: { params: { category: string } }) {
+export default async function CategoryPage({ params,searchParams }:Props) {
+    const { category } = params;
+  const sort = searchParams.sort || 'price-asc';
   try {
-    const products: Product[] = await fetchProducts(params.category);
-
+    const products:Product[] = await fetchProducts(category,sort);
+    
     if (products.length === 0) {
       return <p>No products found for this category.</p>;
     }
 
     return (
       <div>
+          <div className="mb-4">
+        {/* Sorting options could be managed on the client side if needed */}
+        <p>Sorted by: {sort === 'price-asc' ? 'Price: Low to High' : 'Price: High to Low'}</p>
+      </div>
         <ul className="auto grid grid-cols-3 gap-10 bg-[#667685]">
           {products.map((product) => (
             <li
