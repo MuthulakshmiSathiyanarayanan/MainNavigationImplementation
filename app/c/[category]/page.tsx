@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { Product,Props } from '@/app/components/type';
 
-// Function to fetch products by category
 async function fetchProducts(category: string,sort:string) {
   const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
   const data: Product[] = await response.json();
@@ -17,7 +16,6 @@ async function fetchProducts(category: string,sort:string) {
   }
   return data;
 }
-// Server-side component for the category page
 export default async function CategoryPage({ params,searchParams }:Props) {
     const { category } = params;
   const sort = searchParams.sort || 'price-asc';
@@ -31,7 +29,6 @@ export default async function CategoryPage({ params,searchParams }:Props) {
     return (
       <div>
           <div className="mb-4">
-        {/* Sorting options could be managed on the client side if needed */}
         <p>Sorted by: {sort === 'price-asc' ? 'Price: Low to High' : 'Price: High to Low'}</p>
       </div>
         <ul className="auto grid grid-cols-3 gap-10 bg-[#667685]">
