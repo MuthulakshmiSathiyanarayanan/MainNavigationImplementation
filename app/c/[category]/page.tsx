@@ -13,7 +13,7 @@ const CategoryPage = ({params}:{params:any}) => {
      const fetchProducts = async () => {
       try {
         const res = await fetch(`https://fakestoreapi.com/products/category/${params.category}`);
-          const data = await res.json();
+          const data:Product[] = await res.json();//ensuring data matches exp. structure of prodct.array
           console.log(data);
         setProducts(data);
       } catch (error) {
