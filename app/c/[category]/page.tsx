@@ -1,6 +1,6 @@
 // app/c/[category]/page.tsx (or .js)
 import Image from 'next/image';
-import { Product } from '@/app/components/type'; // Ensure this import path is correct
+import { Product } from '@/app/components/type';
 
 // Function to fetch products by category
 async function fetchProducts(category: string) {
