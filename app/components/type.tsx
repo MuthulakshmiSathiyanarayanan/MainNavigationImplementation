@@ -11,6 +11,8 @@ export interface Props{
     category: string;
   };
   searchParams: {
-    sort?: string; // Optional query parameter for sorting
+    sort?: string;
+    search: string;// Optional query parameter for sorting & searching
+    
   };
   }
