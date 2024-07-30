@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { Product,Props } from '@/app/components/type';
+import { Product, Props } from '@/app/components/type';
+import Link from 'next/link';
 
 async function fetchProducts(category: string,sort:string,searchTerm:string) {
   const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);//axis , no need to mention resp.json
@@ -45,7 +46,7 @@ export default async function CategoryPage({ params,searchParams }:Props) {
               className="space-y-1 space-x-3x-1 gap-3 bg-[#cbd8e0] p-1 rounded-3xl mt-6"
               key={product.id}
             >
-              <h1 className="flex ml-[25px]">ID: {product.id}</h1>
+              <Link className="flex ml-[25px] bg-[#d4dca3] w-12 justify-center" href={`/p/${product.id}`}>ID: {product.id}</Link>
               <Image
                 className="p-[5px] max-w-[150px] min-w-[150px] max-h-[180px] min-h-[180px] bg-customDark rounded-[20px] mt-[15px] ml-[25px]"
                 src={product.image}
