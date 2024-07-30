@@ -1,26 +1,33 @@
-'use client';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { Product,Props } from '@/app/components/type';
 
-async function fetchProducts(category: string,sort:string) {
-  const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+async function fetchProducts(category: string,sort:string,searchTerm:string) {
+  const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);//axis , no need to mention resp.json
   const data: Product[] = await response.json();
   if (!response.ok) {
     throw new Error('Failed to fetch products');
   }
+
+   // Filter products based on the search term
+   //search
+   const filteredData = data.filter(product =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+//sort
   if (sort === 'price-asc') {
-    data.sort((a, b) => a.price - b.price);
+    filteredData.sort((a, b) => a.price - b.price);
   } else if (sort === 'price-desc') {
-    data.sort((a, b) => b.price - a.price);
+    filteredData.sort((a, b) => b.price - a.price);
+    
   }
-  return data;
+  return filteredData;
 }
 export default async function CategoryPage({ params,searchParams }:Props) {
     const { category } = params;
-  const sort = searchParams.sort || 'price-asc';
+  const sort = searchParams.sort || 'price-desc';//sorting 
+  const searchTerm = searchParams.search || ''; // Get search term 
   try {
-    const products:Product[] = await fetchProducts(category,sort);
+    const products:Product[] = await fetchProducts(category,sort,searchTerm);
     
     if (products.length === 0) {
       return <p>No products found for this category.</p>;
@@ -29,7 +36,8 @@ export default async function CategoryPage({ params,searchParams }:Props) {
     return (
       <div>
           <div className="mb-4">
-        <p>Sorted by: {sort === 'price-asc' ? 'Price: Low to High' : 'Price: High to Low'}</p>
+          <p>Sorted by: {sort === 'price-asc' ? 'Price: Low to High' : 'Price: High to Low'}        </p>
+          {searchTerm && <p>Search term: {searchTerm}</p>}
       </div>
         <ul className="auto grid grid-cols-3 gap-10 bg-[#667685]">
           {products.map((product) => (
