@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Product, Props } from '@/app/components/type';
 import Link from 'next/link';
 
-async function fetchProducts(category: string,sort:string,searchTerm:string) {
+async function fetchProductDetails(category: string,sort:string,searchTerm:string) {
   const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);//axis , no need to mention resp.json
   const data: Product[] = await response.json();
   if (!response.ok) {
@@ -23,12 +23,16 @@ async function fetchProducts(category: string,sort:string,searchTerm:string) {
   }
   return filteredData;
 }
+
+
+//read in the same order as passed 
 export default async function CategoryPage({ params,searchParams }:Props) {
-    const { category } = params;
+    const { category } = params;//array folder structure path name
   const sort = searchParams.sort || 'price-desc';//sorting 
   const searchTerm = searchParams.search || ''; // Get search term 
+  
   try {
-    const products:Product[] = await fetchProducts(category,sort,searchTerm);
+    const products:Product[] = await fetchProductDetails(category,sort,searchTerm);//passing the 
     
     if (products.length === 0) {
       return <p>No products found for this category.</p>;
@@ -36,6 +40,7 @@ export default async function CategoryPage({ params,searchParams }:Props) {
 
     return (
       <div>
+        {/* <button className="flex ml-[25px] bg-[#d4dca3] w-12 justify-center" type="submit" onClick={handleSort}>sort</button>  */}
           <div className="mb-4">
           <p>Sorted by: {sort === 'price-asc' ? 'Price: Low to High' : 'Price: High to Low'}        </p>
           {searchTerm && <p>Search term: {searchTerm}</p>}
