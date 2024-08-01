@@ -2,7 +2,7 @@
 import { ApolloClient, InMemoryCache,ApolloProvider } from '@apollo/client';
 import React, { ReactNode } from 'react';
 const client = new ApolloClient({
-    uri: 'https://api.spacex.land/graphql/',
+    uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
     cache: new InMemoryCache(),
 });
 interface ProviderProps {

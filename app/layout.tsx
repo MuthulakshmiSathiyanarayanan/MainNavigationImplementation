@@ -4,7 +4,6 @@ import "./globals.css";
 import NavBar from "./components/header";
 import Logo from "./components/logo";
 import Provider from "./components/provider";
-// import Home from "./page";
 
 const inter = Inter({ subsets: ["latin"] });
 
