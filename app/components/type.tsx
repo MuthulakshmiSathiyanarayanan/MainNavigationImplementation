@@ -8,6 +8,10 @@ export interface Product {
     // Add other properties if needed
 }
 
+export interface SearchBarProps {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}
 export interface Props{
   params: {
     category: string;
