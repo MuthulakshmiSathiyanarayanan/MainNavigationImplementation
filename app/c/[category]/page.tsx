@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Product, Props } from '@/app/components/type';
 import Link from 'next/link';
+import SortingPage from '@/app/components/sorting';
 
 async function fetchProductDetails(category: string,sort:string,searchTerm:string) {
   const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);//axis , no need to mention resp.json
@@ -40,7 +41,6 @@ export default async function CategoryPage({ params,searchParams }:Props) {
 
     return (
       <div>
-        {/* <button className="flex ml-[25px] bg-[#d4dca3] w-12 justify-center" type="submit" onClick={handleSort}>sort</button>  */}
           <div className="mb-4">
           <p>Sorted by: {sort === 'price-asc' ? 'Price: Low to High' : 'Price: High to Low'}        </p>
           {searchTerm && <p>Search term: {searchTerm}</p>}

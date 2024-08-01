@@ -3,7 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/header";
 import Logo from "./components/logo";
+import Provider from "./components/provider";
+// import Home from "./page";
+
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "NextJS app for eCommerce",
@@ -17,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-           <body className={inter.className}> <><Logo/></><><NavBar/></>{children}</body>
+      <body className={inter.className}>
+      <Provider>
+        <Logo />
+                   <NavBar />
+          {children}
+          </Provider></body>
     </html>
   );
 }
