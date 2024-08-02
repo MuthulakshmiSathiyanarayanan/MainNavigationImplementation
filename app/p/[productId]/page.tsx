@@ -1,13 +1,13 @@
 // app/c/[category]/page.tsx (or .js)
 import Image from 'next/image';
-import { Product } from '@/app/components/type'; // Ensure this import path is correct
+import { Product,ProductDetailsProps} from '@/app/components/type'; 
 import ProductDetail from './productDetails'
 
 // Function to fetch products by category
-async function fetchProducts(productId:number) {
+async function fetchProducts(productId: number) {
   const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
-  const data: Product[] = await response.json();
-  // console.log(data);
+  const data: Product = await response.json();
+   console.log(data);
   if (!response.ok) {
     throw new Error('Failed to fetch products');
   }
@@ -19,23 +19,22 @@ async function fetchProducts(productId:number) {
 export default async function ProductPage({ params }: { params: { productId:number} }) {
   try {
     const products = await fetchProducts(params.productId);
-  //  console.log(products);
+    console.log("----products---",products);
 
-    if (products.length === 0) {
+
+    if (Object.keys(products).length === 0) {
       return <p>No products found for this category.</p>;
     }
     return (
       <div>
-        
- {products?.map((e) => (
-          <ProductDetail{...e} />
-       ))}
+   <ProductDetail productData={products} />
 
       </div>
     );
     
     
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Error fetching products:', error);
     return <p>Something went wrong </p>;
   }

@@ -1,4 +1,5 @@
 export interface Product {
+  length: number;
     id: number;
     title: string;
     description: string;
@@ -7,7 +8,10 @@ export interface Product {
   key: number;
     // Add other properties if needed
 }
-
+export interface ProductDetailsProps {
+  map(arg0: (product: any) => import("react").JSX.Element): import("react").ReactNode;
+  products: Product[]; // Expecting a single Product object
+}
 export interface Props{
   params: {
     category: string;
