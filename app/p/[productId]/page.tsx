@@ -1,6 +1,7 @@
 // app/c/[category]/page.tsx (or .js)
 import Image from 'next/image';
 import { Product } from '@/app/components/type'; // Ensure this import path is correct
+import ProductDetail from './productDetails'
 
 // Function to fetch products by category
 async function fetchProducts(productId:number) {
@@ -25,27 +26,11 @@ export default async function ProductPage({ params }: { params: { productId:numb
     }
     return (
       <div>
-        <ul className="flex flex-col bg-[#e9e4ad]">
-          {/* {products.map((product) => ( */}
-            <li
-              className="bg-[#cbd8e0] p-1 rounded-3xl mt-6"
-            
-            >
-              <h1 className="flex  ml-[25px]">ID: {products.id}</h1>
-              <Image
-                className="p-[5px] max-w-[150px] min-w-[150px] max-h-[180px] min-h-[180px] bg-customDark rounded-[20px] mt-[15px] ml-[25px]"
-                src={products.image}
-                alt={products.title}
-                width={180}
-                height={180}
-              />
-              <p className="flex ml-[25px]">${products.price}</p>
-              <h2 className="bg-customLight italic text-lg font-normal rounded-[5px] p-[2px] ml-[25px] break-words flex flex-wrap justify-center max-w-[150px]">
-                {products.title}
-              </h2>
-            </li>
-           {/* ))} */}
-        </ul>
+        
+ {products?.map((e) => (
+          <ProductDetail{...e} />
+       ))}
+
       </div>
     );
     
