@@ -1,13 +1,13 @@
 'use client'
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { ItemList } from '../components/queries/itemList';
-import { SearchBarProps } from '../components/type';
+import { ItemList } from '../lib/queries/itemList';
+// import { SearchBarProps } from '../components/type';
 import SearchBar from './search';
 
 export default function Film() {
   const { loading, error, data } = useQuery(ItemList);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState('');
   console.log(data);
   if (loading) return <p>Loading...</p>;
   if (error) {
@@ -15,10 +15,10 @@ export default function Film() {
     
   }
    // Filter films based on the search query
-   const filteredFilms = data?.allFilms.films.filter(film =>
+   const filteredFilms = data?.allFilms.films.filter((film: { title: string; director: string; releaseDate: number; }) =>
     film.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     film.director.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    film.releaseDate.toLowerCase().includes(searchQuery.toLowerCase())
+    film.releaseDate.toString().includes(searchQuery.toLowerCase())
   ) || [];
 
 
