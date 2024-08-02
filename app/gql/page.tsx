@@ -1,9 +1,8 @@
 'use client'
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import client from '@/app/lib/apolloClient';
-import { ItemList } from '../queries/itemList';
-import { SearchBarProps } from '../type';
+import { ItemList } from '../components/queries/itemList';
+import { SearchBarProps } from '../components/type';
 import SearchBar from './search';
 
 export default function Film() {

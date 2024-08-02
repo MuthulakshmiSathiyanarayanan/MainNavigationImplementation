@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Product, Props } from '@/app/components/type';
 import Link from 'next/link';
+
 import SortingPage from '@/app/components/sorting';
 
 async function fetchProductDetails(category: string,sort:string,searchTerm:string) {

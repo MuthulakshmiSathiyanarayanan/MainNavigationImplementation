@@ -1,4 +1,4 @@
-import Film from "./components/pages/page";
+import Film from "./gql/page";
 export default function Home() {
   return (
     <div>
