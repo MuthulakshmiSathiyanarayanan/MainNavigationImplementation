@@ -2,9 +2,16 @@
 import React from 'react'
 import Image from 'next/image'
 import { Product, ProductDetailsProps } from '@/app/components/type'
+// import { AddCart } from './cart';
+import { useRouter} from 'next/navigation';
+
 
 const ProductDetail = ({ productData }: { productData: Product }) => {
-  console.log("--productData---",productData);
+  const router = useRouter()
+  console.log("--productData---", productData);
+  const addToCart = () => {
+          router.push(`/cart/${productData.id}`);
+  }
       return (
     <div>
      <ul className="bg-[#8bd6ed] max-w-[250px] p-1 rounded-3xl mt-6 ml-[25px]">
@@ -23,7 +30,7 @@ const ProductDetail = ({ productData }: { productData: Product }) => {
                 {productData.title}
                    </h2>
                    <p>{ }</p>
-                  <button className="bg-slate-400 ml-[25px]" >Add to cart</button>
+                  <button className="bg-slate-400 ml-[25px]" onClick={addToCart}>Add to cart</button>
 
             </li>
             {/* ))}  */}
