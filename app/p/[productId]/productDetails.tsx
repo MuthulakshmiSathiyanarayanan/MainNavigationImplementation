@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Product, ProductDetailsProps } from '@/app/components/type'
-// import { AddCart } from './cart';
+import CartPage from '@/app/cart/[productID]/page';
 import { useRouter} from 'next/navigation';
 
 
