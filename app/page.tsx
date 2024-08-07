@@ -1,13 +1,11 @@
 // pages/index.js
 import Logo from './components/logo'
-import { cartDetails } from './components/myWork';
-
+import CartDetails from './components/cartPage';
 export default function Home() {
-  const cart:any = cartDetails();
   return (
     <div>
       <header>
-        {cart}
+        <CartDetails/>
       </header>
     </div>
   );

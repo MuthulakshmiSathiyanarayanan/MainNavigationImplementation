@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Product, ProductDetailsProps } from '@/app/components/type'
 import CartPage from '@/app/cart/[productID]/page';
 import { useRouter} from 'next/navigation';
-
+import Link from 'next/link';
 
 const ProductDetail = ({ productData }: { productData: Product }) => {
   const router = useRouter()
@@ -31,7 +31,7 @@ const ProductDetail = ({ productData }: { productData: Product }) => {
                    </h2>
                    <p>{ }</p>
                   <button className="bg-slate-400 ml-[25px]" onClick={addToCart}>Add to cart</button>
-
+                  <Link className="flex ml-[25px] bg-[#d4dca3] w-12 justify-center" href={`/p/${productData.id}`}>ID: {productData.id}</Link>
             </li>
             {/* ))}  */}
         </ul>  
